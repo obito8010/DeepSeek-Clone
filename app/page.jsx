@@ -1,5 +1,6 @@
 'use client';
 import { assets } from "@/assets/assets";
+import PromptBox from "@/components/PromptBox";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import { useState } from "react";
@@ -35,6 +36,7 @@ export default function Home() {
         }
 
         {/* --prompt box-- */}
+        <PromptBox isLoading={isLoading} setIsLoading={setIsLoading}/>
         <p className="text-xs absolute bottom-1 test-gray-500">Ai generated , for reference only</p>
 
 
