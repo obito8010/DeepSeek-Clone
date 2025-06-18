@@ -1,8 +1,15 @@
+"use client";
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
+import { useClerk,UserButton } from '@clerk/nextjs'
+import { useAppContext } from '@/context/AppContext'
 
 const Sidebar = ({expand,setExpand}) => {
+
+    const { openSignIn } = useClerk()
+    const {user} = useAppContext()
+
   return (
     <div className={`flex flex-col justify-between bg-[#212327] pt-7 transition-all z-50 max-md:absolute max-md:h-screen ${expand ? 'p-4 w-64' : 'md:w-20 w-0 max-md:overflow-hidden'}`}>
         <div>
@@ -50,15 +57,15 @@ const Sidebar = ({expand,setExpand}) => {
                 {expand && <><span>Get App</span><Image alt='' src={assets.new_icon}/></>}
             </div>
 
-        <div className={`flex item-center ${expand ? 'hover:bg-white/10 rounded-lg':'justify-center w-full'}gap-3 text-white/60 text-sm p-2 mt-2 cursor-pointer`}>
-            <Image src={assets.profile_icon} alt='' className='w-7'/>
+        <div onClick={user ? null : openSignIn}
+        className={`flex item-center ${expand ? 'hover:bg-white/10 rounded-lg':'justify-center w-full'}gap-3 text-white/60 text-sm p-2 mt-2 cursor-pointer`}>
+            {
+            user ? <UserButton/>:<Image src={assets.profile_icon} alt='' className='w-7'/>
+            }
             {expand && <span>my profile</span>}
         </div>
-
-        </div>
-        
+        </div>       
     </div>
-
   )
 }
 
