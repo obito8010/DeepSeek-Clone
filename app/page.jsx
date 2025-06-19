@@ -2,6 +2,7 @@
 import { assets } from "@/assets/assets";
 import PromptBox from "@/components/PromptBox";
 import Sidebar from "@/components/Sidebar";
+import Message from "@/components/Message";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -32,7 +33,7 @@ export default function Home() {
           <p className="text-sm mt-2">How can i help you today</p>
           </>
         ):
-        (<div></div>)
+        (<div><Message role='user' content='what is nextjs'/></div>)
         }
 
         {/* --prompt box-- */}
