@@ -23,4 +23,4 @@ Authentication: Clerk (or replace with Auth.js/Auth0 if preferred)
 2.Set up environment variables (.env.local)
 3.Run the dev server with npm run dev
 4.Start uploading PDFs and querying them with smart AI search!
-5
+
